@@ -15,35 +15,45 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "InfluxDB",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "decimals": 2,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kwatth"
         },
         "overrides": []
       },
-      "format": "kwatth",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 6,
         "x": 0,
         "y": 0
@@ -51,38 +61,26 @@
       "id": 6,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.5",
       "targets": [
         {
           "groupBy": [
@@ -123,46 +121,45 @@
           "tags": []
         }
       ],
-      "thresholds": "",
       "title": "Electricity used",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "InfluxDB",
-      "decimals": 2,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "decimals": 2,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyGBP"
         },
         "overrides": []
       },
-      "format": "currencyGBP",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 6,
         "x": 6,
         "y": 0
@@ -170,38 +167,26 @@
       "id": 17,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.5",
       "targets": [
         {
           "groupBy": [
@@ -242,46 +227,45 @@
           "tags": []
         }
       ],
-      "thresholds": "",
       "title": "Agile cost (units only)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "InfluxDB",
-      "decimals": 2,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "decimals": 2,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyGBP"
         },
         "overrides": []
       },
-      "format": "currencyGBP",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 6,
         "x": 12,
         "y": 0
@@ -289,38 +273,26 @@
       "id": 18,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.5",
       "targets": [
         {
           "groupBy": [
@@ -361,46 +333,45 @@
           "tags": []
         }
       ],
-      "thresholds": "",
       "title": "Agile cost (total)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "InfluxDB",
-      "decimals": 4,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "decimals": 4,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyGBP"
         },
         "overrides": []
       },
-      "format": "currencyGBP",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 6,
         "x": 18,
         "y": 0
@@ -408,38 +379,26 @@
       "id": 19,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.5",
       "targets": [
         {
           "groupBy": [
@@ -480,18 +439,8 @@
           "tags": []
         }
       ],
-      "thresholds": "",
       "title": "Agile effective unit cost",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -499,19 +448,20 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB",
+      "decimals": 10,
       "fieldConfig": {
         "defaults": {
           "custom": {}
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 2,
@@ -527,7 +477,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "options": {
@@ -539,12 +489,20 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "Go cost",
+          "$$hashKey": "object:72",
+          "alias": "Usage (kWh)",
+          "yaxis": 1,
+          "zindex": -1
+        },
+        {
+          "$$hashKey": "object:73",
+          "alias": "Agile cost (p)",
           "yaxis": 2,
           "zindex": -1
         },
         {
-          "alias": "Agile cost",
+          "$$hashKey": "object:426",
+          "alias": "Agile rate (p / kWh)",
           "yaxis": 2,
           "zindex": -1
         }
@@ -554,7 +512,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Usage",
+          "alias": "Usage (kWh)",
           "groupBy": [
             {
               "params": [
@@ -569,6 +527,7 @@
               "type": "fill"
             }
           ],
+          "hide": false,
           "measurement": "electricity",
           "orderByTime": "ASC",
           "policy": "default",
@@ -593,7 +552,7 @@
           "tags": []
         },
         {
-          "alias": "Agile cost",
+          "alias": "Agile cost (p)",
           "groupBy": [
             {
               "params": [
@@ -612,7 +571,7 @@
           "measurement": "electricity",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"agile_cost\")/100 FROM \"electricity\" WHERE $timeFilter GROUP BY time(30m) fill(linear)",
+          "query": "SELECT mean(\"cost\") FROM \"electricity\" WHERE $timeFilter GROUP BY time($__interval) fill(linear)",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -621,6 +580,45 @@
               {
                 "params": [
                   "cost"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Agile rate (p / kWh)",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select mean(\"agile_rate\") from \"electricity\" where $timeFilter GROUP BY time(30m) fill(linear);",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
                 ],
                 "type": "field"
               },
@@ -653,6 +651,8 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:96",
+          "decimals": null,
           "format": "kwatth",
           "label": "Usage",
           "logBase": 1,
@@ -661,8 +661,9 @@
           "show": true
         },
         {
-          "decimals": 2,
-          "format": "currencyGBP",
+          "$$hashKey": "object:97",
+          "decimals": null,
+          "format": "none",
           "label": "Cost",
           "logBase": 1,
           "max": null,
@@ -671,7 +672,7 @@
         }
       ],
       "yaxis": {
-        "align": false,
+        "align": true,
         "alignLevel": null
       }
     }
@@ -684,8 +685,8 @@
     "list": []
   },
   "time": {
-    "from": "2020-06-27T23:23:58.118Z",
-    "to": "2020-06-28T23:25:58.285Z"
+    "from": "2020-06-27T23:00:00.000Z",
+    "to": "2020-06-30T22:59:59.000Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -711,8 +712,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "Europe/London",
   "title": "Energy usage",
   "uid": "7y82bbGMk",
-  "version": 2
+  "version": 18
 }
