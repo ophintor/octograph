@@ -121,7 +121,8 @@ def store_series(connection, series, metrics, rate_data):
     type=click.Path(exists=True, dir_okay=True, readable=True),
 )
 @click.option('--from-date', default='yesterday midnight', type=click.STRING)
-@click.option('--to-date', default='today midnight', type=click.STRING)
+@click.option('--to-date', default='tomorrow midnight', type=click.STRING)
+
 def cmd(config_file, from_date, to_date):
 
     config = ConfigParser()
@@ -179,7 +180,6 @@ def cmd(config_file, from_date, to_date):
 
     click.echo(
         f'Retrieving electricity data for {from_iso} until {to_iso}...',
-        nl=False
     )
     e_consumption = retrieve_paginated_data(
         api_key, e_url, from_iso, to_iso
@@ -187,7 +187,6 @@ def cmd(config_file, from_date, to_date):
     click.echo(f' {len(e_consumption)} readings.')
     click.echo(
         f'Retrieving Agile rates for {from_iso} until {to_iso}...',
-        nl=False
     )
     rate_data['electricity']['agile_unit_rates'] = retrieve_paginated_data(
         api_key, agile_url, from_iso, to_iso
