@@ -39,52 +39,15 @@ def store_series(connection, series, metrics, rate_data):
         for point in agile_data
     }
 
-    def active_rate_field(measurement):
-        if series == 'gas':
-            return 'unit_rate'
-        elif not rate_data['unit_rate_low_zone']:  # no low rate
-            return 'unit_rate_high'
-
-        low_start_str = rate_data['unit_rate_low_start']
-        low_end_str = rate_data['unit_rate_low_end']
-        low_zone = rate_data['unit_rate_low_zone']
-
-        measurement_at = maya.parse(measurement['interval_start'])
-
-        low_start = maya.when(
-            measurement_at.datetime(to_timezone=low_zone).strftime(
-                f'%Y-%m-%dT{low_start_str}'
-            ),
-            timezone=low_zone
-        )
-        low_end = maya.when(
-            measurement_at.datetime(to_timezone=low_zone).strftime(
-                f'%Y-%m-%dT{low_end_str}'
-            ),
-            timezone=low_zone
-        )
-        low_period = maya.MayaInterval(low_start, low_end)
-
-        return \
-            'unit_rate_low' if measurement_at in low_period \
-            else 'unit_rate_high'
-
     def fields_for_measurement(measurement):
         consumption = measurement['consumption']
-        rate = active_rate_field(measurement)
-        rate_cost = rate_data[rate]
-        cost = consumption * rate_cost
-        standing_charge = rate_data['standing_charge'] / 48  # 30 minute reads
         fields = {
             'consumption': consumption,
-            'cost': cost,
-            'total_cost': cost + standing_charge,
         }
         if agile_data:
             agile_standing_charge = rate_data['agile_standing_charge'] / 48
             agile_unit_rate = agile_rates.get(
-                maya.parse(measurement['interval_end']).iso8601(),
-                rate_data[rate]  # cludge, use Go rate during DST changeover
+                maya.parse(measurement['interval_end']).iso8601()
             )
             agile_cost = agile_unit_rate * consumption
             fields.update({
@@ -98,7 +61,6 @@ def store_series(connection, series, metrics, rate_data):
         period = maya.parse(measurement['interval_end'])
         time = period.datetime().strftime('%H:%M')
         return {
-            'active_rate': active_rate_field(measurement),
             'time_of_day': time,
         }
 
@@ -148,26 +110,10 @@ def cmd(config_file, from_date, to_date):
             f'{e_mpan}/meters/{e_serial}/consumption/'
     agile_url = config.get('electricity', 'agile_rate_url', fallback=None)
 
-    timezone = config.get('electricity', 'unit_rate_low_zone', fallback=None)
+    timezone = config.get('electricity', 'timezone', fallback=None)
 
     rate_data = {
         'electricity': {
-            'standing_charge': config.getfloat(
-                'electricity', 'standing_charge', fallback=0.0
-            ),
-            'unit_rate_high': config.getfloat(
-                'electricity', 'unit_rate_high', fallback=0.0
-            ),
-            'unit_rate_low': config.getfloat(
-                'electricity', 'unit_rate_low', fallback=0.0
-            ),
-            'unit_rate_low_start': config.get(
-                'electricity', 'unit_rate_low_start', fallback="00:00"
-            ),
-            'unit_rate_low_end': config.get(
-                'electricity', 'unit_rate_low_end', fallback="00:00"
-            ),
-            'unit_rate_low_zone': timezone,
             'agile_standing_charge': config.getfloat(
                 'electricity', 'agile_standing_charge', fallback=0.0
             ),

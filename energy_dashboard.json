@@ -489,19 +489,16 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:72",
           "alias": "Usage (kWh)",
           "yaxis": 1,
           "zindex": -1
         },
         {
-          "$$hashKey": "object:73",
           "alias": "Agile cost (p)",
           "yaxis": 2,
           "zindex": -1
         },
         {
-          "$$hashKey": "object:426",
           "alias": "Agile rate (p / kWh)",
           "yaxis": 2,
           "zindex": -1
@@ -572,14 +569,14 @@
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"cost\") FROM \"electricity\" WHERE $timeFilter GROUP BY time($__interval) fill(linear)",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "cost"
+                  "agile_cost"
                 ],
                 "type": "field"
               },
@@ -602,23 +599,24 @@
             },
             {
               "params": [
-                "null"
+                "linear"
               ],
               "type": "fill"
             }
           ],
           "hide": false,
+          "measurement": "electricity",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "select mean(\"agile_rate\") from \"electricity\" where $timeFilter GROUP BY time(30m) fill(linear);",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "value"
+                  "agile_rate"
                 ],
                 "type": "field"
               },
@@ -651,7 +649,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:96",
           "decimals": null,
           "format": "kwatth",
           "label": "Usage",
@@ -661,7 +658,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:97",
           "decimals": null,
           "format": "none",
           "label": "Cost",
@@ -685,8 +681,8 @@
     "list": []
   },
   "time": {
-    "from": "2020-06-27T23:00:00.000Z",
-    "to": "2020-06-30T22:59:59.000Z"
+    "from": "now-7d",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -715,5 +711,5 @@
   "timezone": "Europe/London",
   "title": "Energy usage",
   "uid": "7y82bbGMk",
-  "version": 18
+  "version": 2
 }
