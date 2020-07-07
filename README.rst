@@ -1,21 +1,13 @@
 Octograph
 ---------
 
+Project forked and modified from https://github.com/stevenewey/octograph.
+
 Python tool for downloading energy consumption data from the
 `Octopus Energy API`_ and loading it into `InfluxDB`_.
 
-If you think you'd find this useful, but haven't switched to Octopus yet, then
-you can follow my referrer link `<https://share.octopus.energy/vivid-emu-468>`_
-and you'll receive a £50 bill credit, and so will I :)
-
-In the process, additional metrics will be generated and stored for unit rates
-and costs as configured by the user. Suitable for two-rate electricity tariffs
-like `Octopus Energy Go`_. Single rate gas readings are also retrieved and
-stored.
-
-The secondary unit rate is specified with start and end times, and a timezone
-which is useful for the Go tariff where the discount rate changes with
-daylight savings time.
+In the process, Agile tariff metrics will be generated and stored for unit rates
+and costs. Suitable for Octopus Agile tariffs.
 
 Included is an example `Grafana`_ dashboard to visualise the captured data.
 
@@ -52,7 +44,7 @@ can be passed as an argument.
 
 By default, energy data for the previous day will be collected. Optional from
 and to ranges may be specified to retrieve larger datasets. It is anticipated
-that the script will be run daily by a cron job.
+that the script will be run daily by a cron job (see ``cronjob.sh``).
 
 .. code:: bash
 
